@@ -1,0 +1,6 @@
+Flask
+Flask-RESTful
+Flask-SQLAlchemy
+uwsgi
+psycopg2
+datetime
