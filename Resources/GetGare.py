@@ -4,7 +4,6 @@ from Models.ProblemiSimulazioneModel import ProblemiSimulazioneModel
 from Models.ProblemaModel import ProblemaModel
 from Models.GaraModel import GaraModel
 import time
-from CheckEnd import CheckEnd
 class GetGare(Resource):
 
     def get (self):
