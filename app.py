@@ -11,6 +11,7 @@ from Resources.CreateGara import CreateGara
 from Resources.CreateSimulazione import CreateSimulazione
 from Resources.StartSimulazione import StartSimulazione
 from Resources.ConsegnaProblema import ConsegnaProblema
+from Resources.GetGare import GetGare
 
 
 
@@ -37,7 +38,7 @@ api.add_resource(ConsegnaProblema, "/problema/consegna")
 
 api.add_resource(CreateSimulazione, "/simulazione/create")
 api.add_resource(StartSimulazione, "/simulazione/start")
-#api.add_resource(StartSimulazione, "/gara/all")
+api.add_resource(GetGare, "/gara/all")
 
 
 
