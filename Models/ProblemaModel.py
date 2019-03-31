@@ -1,5 +1,5 @@
 from db import db
-from GaraModel import GaraModel
+from Models.GaraModel import GaraModel
 class ProblemaModel(db.Model):
     __tablename__="problema"
     id = db.Column(db.Integer, primary_key=True)
