@@ -4,7 +4,7 @@ from Models.ProblemiSimulazioneModel import ProblemiSimulazioneModel
 from Models.ProblemaModel import ProblemaModel
 from Models.GaraModel import GaraModel
 import time
-from CheckEnd import CheckEnd
+from Resources.CheckEnd import CheckEnd
 class ConsegnaProblema(Resource):
 
     def post (self):

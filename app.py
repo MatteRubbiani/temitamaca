@@ -37,6 +37,7 @@ api.add_resource(ConsegnaProblema, "/problema/consegna")
 
 api.add_resource(CreateSimulazione, "/simulazione/create")
 api.add_resource(StartSimulazione, "/simulazione/start")
+#api.add_resource(StartSimulazione, "/gara/all")
 
 
 
