@@ -18,6 +18,8 @@ class CreateGara(Resource):
         if errore<0:
             errore=-errore
         now=int(time.time())
+        if nome==None:
+            return "ci vuole un nome", 400
 
         gara=GaraModel(None, nome, descrizione, password, errore, autore, now)
         gara.save_to_db()
