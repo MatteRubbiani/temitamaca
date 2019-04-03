@@ -13,6 +13,10 @@ from Resources.StartSimulazione import StartSimulazione
 from Resources.ConsegnaProblema import ConsegnaProblema
 from Resources.GetGare import GetGare
 
+from Resources.GetProblemi import GetSoluzioneProblemi
+
+from Resources.Autorizza import Autorizza
+
 
 
 app= Flask(__name__)
@@ -24,9 +28,9 @@ api=Api(app)
 
 
 
-#@app.before_first_request
-#def create_table():
-    #db.create_all()
+@app.before_first_request
+def create_table():
+    db.create_all()
 
 
 
@@ -36,9 +40,14 @@ api.add_resource(CreateGara, "/gara/create")
 api.add_resource(CreateProblema, "/problema/create")
 api.add_resource(ConsegnaProblema, "/problema/consegna")
 
+api.add_resource(GetSoluzioneProblemi, "/problemi/all")
+api.add_resource(GetGare, "/gara/all")
+
 api.add_resource(CreateSimulazione, "/simulazione/create")
 api.add_resource(StartSimulazione, "/simulazione/start")
-api.add_resource(GetGare, "/gara/all")
+
+api.add_resource(Autorizza, "/autorizza")
+
 
 
 
