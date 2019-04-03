@@ -15,11 +15,13 @@ class GetGare(Resource):
 
         for gara in gare:
             numeroProblemi=len(ProblemaModel.find_all_by_gara_id(gara.id))
+            o=time.strftime('%d-%m-%Y', time.localtime(gara.date))
             b={
                 "nome":gara.nome,
                 "descrizione":gara.descrizione,
                 "autore":gara.autore,
-                "numeroProblemi":numeroProblemi
+                "numeroProblemi":numeroProblemi,
+                "data":o
             }
             a.append(b)
         if a:

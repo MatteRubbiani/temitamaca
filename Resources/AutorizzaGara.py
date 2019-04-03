@@ -1,6 +1,6 @@
 from flask_restful import Resource, request
 from Models.GaraModel import GaraModel
-class Autorizza(Resource):
+class AutorizzaGara(Resource):
 
     def post(self):
         gara1=request.args.get('gara')

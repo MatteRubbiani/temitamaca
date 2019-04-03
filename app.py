@@ -15,7 +15,9 @@ from Resources.GetGare import GetGare
 
 from Resources.GetProblemi import GetSoluzioneProblemi
 
-from Resources.Autorizza import Autorizza
+from Resources.AutorizzaGara import AutorizzaGara
+from Resources.AutorizzaSimulazione import AutorizzaSimulazione
+
 
 
 
@@ -27,11 +29,11 @@ app.secret_key="Matteo"
 api=Api(app)
 
 
-
-#@app.before_first_request
-#def create_table():
-    #db.create_all()
-
+"""
+@app.before_first_request
+def create_table():
+    db.create_all()
+"""
 
 
 
@@ -46,7 +48,8 @@ api.add_resource(GetGare, "/gara/all")
 api.add_resource(CreateSimulazione, "/simulazione/create")
 api.add_resource(StartSimulazione, "/simulazione/start")
 
-api.add_resource(Autorizza, "/autorizza")
+api.add_resource(AutorizzaGara, "/autorizza/gara")
+api.add_resource(AutorizzaSimulazione, "/autorizza/simulazione")
 
 
 

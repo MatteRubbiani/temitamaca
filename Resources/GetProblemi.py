@@ -16,5 +16,6 @@ class GetSoluzioneProblemi(Resource):
         problemi=ProblemaModel.find_all_by_gara_id(gara.id)
         a=[]
         for i in problemi:
-            a.append(i.soluzione)
+            a.append({"soluzione":i.soluzione,
+                      "valore":i.valore})
         return a

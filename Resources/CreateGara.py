@@ -1,5 +1,6 @@
 from flask_restful import Resource, request
 from Models.GaraModel import GaraModel
+import time
 
 class CreateGara(Resource):
 
@@ -14,11 +15,11 @@ class CreateGara(Resource):
 
         if ex_gara:
             return "nome non disponibile", 400
-
         if errore<0:
             errore=-errore
+        now=int(time.time())
 
-        gara=GaraModel(None, nome, descrizione, password, errore, autore)
+        gara=GaraModel(None, nome, descrizione, password, errore, autore, now)
         gara.save_to_db()
         return "la gara e' stata creata", 200
 

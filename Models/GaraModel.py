@@ -8,16 +8,17 @@ class GaraModel(db.Model):
     password=db.Column(db.String(30))
     errore=db.Column(db.Integer)
     autore=db.Column(db.String(30))
+    date=db.Column(db.Integer)
 
 
-
-    def __init__(self, id, nome, descrizione, password, errore, autore):
+    def __init__(self, id, nome, descrizione, password, errore, autore, date):
         self.id=id
         self.nome=nome
         self.descrizione=descrizione
         self.password=password
         self.errore=errore
         self.autore=autore
+        self.date=date
 
     @classmethod
     def find_by_id(cls, id):

@@ -32,5 +32,4 @@ class CreateProblema(Resource):
                 prob=ProblemaModel.modify_problema(gara.id, numero, valore, risposta)
                 return prob.soluzione
             return "gara non esiste"
-
         return "mancano dati"
