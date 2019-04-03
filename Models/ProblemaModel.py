@@ -24,7 +24,9 @@ class ProblemaModel(db.Model):
             a.append(i)
 
         c= sorted(a, key=lambda x: x.numero)
-        return c
+        if c:
+            return c
+        return []
 
     @classmethod
     def find_by_id(cls, id):

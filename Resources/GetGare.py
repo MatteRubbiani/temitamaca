@@ -14,9 +14,7 @@ class GetGare(Resource):
         c=[]
 
         for gara in gare:
-            for i in ProblemaModel.find_all_by_gara_id(gara.id):
-                c.append(i)
-            numeroProblemi=len(c)
+            numeroProblemi=len(ProblemaModel.find_all_by_gara_id(gara.id))
             b={
                 "nome":gara.nome,
                 "descrizione":gara.descrizione,
