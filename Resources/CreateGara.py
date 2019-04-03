@@ -8,6 +8,7 @@ class CreateGara(Resource):
         descrizione=request.args.get('descrizione')
         password=request.args.get('password')
         errore=int(request.args.get('errore'))
+        autore=request.args.get('autore')
 
         ex_gara=GaraModel.find_by_nome(nome)
 
@@ -17,7 +18,7 @@ class CreateGara(Resource):
         if errore<0:
             errore=-errore
 
-        gara=GaraModel(None, nome, descrizione, password, errore)
+        gara=GaraModel(None, nome, descrizione, password, errore, autore)
         gara.save_to_db()
         return "la gara e' stata creata", 200
 

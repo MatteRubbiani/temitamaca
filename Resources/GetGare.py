@@ -7,40 +7,23 @@ import time
 class GetGare(Resource):
 
     def get (self):
-        return [{
-            "nome":"gara",
-            "descrizione":"questa e' una gara",
-            "autore":"Matteo",
-            "numeroProblemi":10
 
-        },
-        {
-            "nome":"No-Skin",
-            "descrizione":"anche questa e' una gara",
-            "autore":"Sempre Matteo",
-            "numeroProblemi":20
+        gare=GaraModel.find_all()
+        a=[]
 
-        },
-        {
-            "nome":"LA-LONGA-DANCE",
-            "descrizione":"questa non e' una gara",
-            "autore":"ILREDD",
-            "numeroProblemi":8
+        c=[]
 
-        },
-        {
-            "nome":"Bianca neve e i 7 silvestri",
-            "descrizione":"questa sembra una gara",
-            "autore":"IO",
-            "numeroProblemi":15
-
-        },
-        {
-            "nome":"MATTEO RUBBIANI",
-            "descrizione":"questa e'",
-            "autore":"Rubbia The Best",
-            "numeroProblemi":12
-
-        }
-
-        ]
+        for gara in gare:
+            for i in ProblemaModel.find_all_by_gara_id(gara.id):
+                c.append(i)
+            numeroProblemi=len(c)
+            b={
+                "nome":gara.nome,
+                "descrizione":gara.descrizione,
+                "autore":gara.autore,
+                "numeroProblemi":numeroProblemi
+            }
+            a.append(b)
+        if a:
+            return a
+        return []

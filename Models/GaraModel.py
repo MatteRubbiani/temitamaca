@@ -7,21 +7,32 @@ class GaraModel(db.Model):
     descrizione=db.Column(db.String(200))
     password=db.Column(db.String(30))
     errore=db.Column(db.Integer)
+    autore=db.Column(db.String(30))
 
 
-    def __init__(self, id, nome, descrizione, password, errore):
+
+    def __init__(self, id, nome, descrizione, password, errore, autore):
         self.id=id
         self.nome=nome
         self.descrizione=descrizione
         self.password=password
         self.errore=errore
-        
+        self.autore=autore
+
     @classmethod
     def find_by_id(cls, id):
         return GaraModel.query.filter_by(id=id).first()
     @classmethod
     def find_by_nome(cls, nome):
         return GaraModel.query.filter_by(nome=nome).first()
+    @classmethod
+    def find_all(cls):
+        a=GaraModel.query.filter_by()
+        b=[]
+        for i in a:
+            b.append(i)
+        return b
+
 
 
 

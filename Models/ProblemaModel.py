@@ -18,7 +18,13 @@ class ProblemaModel(db.Model):
 
     @classmethod
     def find_all_by_gara_id(cls, gara_id):
-        return ProblemaModel.query.filter_by(gara_id=gara_id)
+        p=ProblemaModel.query.filter_by(gara_id=gara_id)
+        a=[]
+        for i in p:
+            a.append(i)
+
+        c= sorted(a, key=lambda x: x.numero)
+        return c
 
     @classmethod
     def find_by_id(cls, id):
