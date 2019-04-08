@@ -10,7 +10,6 @@ class CreateSimulazione(Resource):
         garaNome=request.args.get('gara')
         simulazioneNome=request.args.get('nome')
         durata=request.args.get('durata')
-        codice=request.args.get('codice')
 
         gara=GaraModel.find_by_nome(garaNome)
         if gara is None:
@@ -18,7 +17,7 @@ class CreateSimulazione(Resource):
 
         simulazione1=SimulazioneModel.find_by_nome(simulazioneNome)
         if simulazione1:
-            return "una simulazione con questo nome esiste gia", 400
+            return "una simulazione con questo nome esiste gia", 401
         simulazione=SimulazioneModel(None, gara.id, None, int(durata), 0, simulazioneNome, False)
         simulazione.save_to_db()
         simulazione.create_problemi_simulazione()
