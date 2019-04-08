@@ -6,7 +6,7 @@ class ProblemiSimulazioneModel(db.Model):
     simulazione_id=db.Column(db.Integer)
     problema_id=db.Column(db.Integer)
     tentativi=db.Column(db.Integer)
-    risolto=db.Column(db.Integer)
+    risolto=db.Column(db.Boolean)
     tempo_risoluzione=db.Column(db.Integer)#secondi
 
     def __init__(self, id, simulazione_id, problema_id, tentativi, risolto, tempo_risoluzione):
