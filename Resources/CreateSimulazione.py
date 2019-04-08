@@ -18,7 +18,7 @@ class CreateSimulazione(Resource):
 
         simulazione1=SimulazioneModel.find_by_nome(simulazioneNome)
         if simulazione1:
-            return "una simulazione con questo nome esiste gia"
+            return "una simulazione con questo nome esiste gia", 400
         simulazione=SimulazioneModel(None, gara.id, None, int(durata), 0, simulazioneNome, False)
         simulazione.save_to_db()
         simulazione.create_problemi_simulazione()
