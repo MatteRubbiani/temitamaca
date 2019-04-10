@@ -32,7 +32,8 @@ class GetProblemiSimulazione(Resource):
 
             for i in problemi1:
                 d.append(i)
-            f= d.sort(key=lambda x: x.numero)
+            f = sorted(d, key=lambda x: x.numero)
+        
             #problemi=d.sort(key=lambda x: ProblemaModel.find_id(x.problema_id).numero)
             erroreGara=GaraModel.find_by_id(simulazione.gara_id).errore
             array=[]
