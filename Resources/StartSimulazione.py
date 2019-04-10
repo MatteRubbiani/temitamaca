@@ -9,7 +9,7 @@ class StartSimulazione(Resource):
         password=request.args.get('password')
         time1= int(time.time())
         simulazione=SimulazioneModel.find_by_nome(simulazioneNome)
-        if simulazione is None or simulazione.password != password:
+        if simulazione is None or simulazione.password != password or simulazione.started is True:
             return "nope", 400
         simulazione.inizio=time1
         simulazione.started=True
