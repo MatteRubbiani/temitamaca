@@ -29,7 +29,7 @@ class SimulazioneModel(db.Model):
     def create_problemi_simulazione(self):
         problemi=ProblemaModel.find_all_by_gara_id(self.gara_id)
         for i in problemi:
-            a=ProblemiSimulazioneModel(None, self.id, i.id, 0, False, 0)
+            a=ProblemiSimulazioneModel(None, self.id, i.id, 0, False, 0, i.numero)
             a.save_to_db()
 
     @classmethod
