@@ -43,7 +43,7 @@ class ConsegnaProblema(Resource):
                     i.save_to_db()
                     simulazione.totale_punti=simulazione.totale_punti-punteggio
                     simulazione.save_to_db()
-                    return simulazione.totale_punti
+
                     return False
                 else:
 
@@ -53,7 +53,7 @@ class ConsegnaProblema(Resource):
                     i.save_to_db()
                     simulazione.totale_punti=simulazione.totale_punti+punteggio
                     simulazione.save_to_db()
-                    return simulazione.totale_punti
+
                     return True
                 break
         return "il problema non esiste", 400
