@@ -10,6 +10,7 @@ class CreateSimulazione(Resource):
         garaNome=request.args.get('gara')
         simulazioneNome=request.args.get('nome')
         durata=request.args.get('durata')
+        password=request.args.get('password')
 
         gara=GaraModel.find_by_nome(garaNome)
         if gara is None:
@@ -18,7 +19,7 @@ class CreateSimulazione(Resource):
         simulazione1=SimulazioneModel.find_by_nome(simulazioneNome)
         if simulazione1:
             return "una simulazione con questo nome esiste gia", 401
-        simulazione=SimulazioneModel(None, gara.id, None, int(durata), 0, simulazioneNome, False)
+        simulazione=SimulazioneModel(None, gara.id, None, int(durata), 0, simulazioneNome, False, password)
         simulazione.save_to_db()
         simulazione.create_problemi_simulazione()
         return "la simulazione e'stata creata"

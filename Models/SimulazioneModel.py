@@ -12,9 +12,10 @@ class SimulazioneModel(db.Model):
     totale_punti=db.Column(db.Integer)
     nome=db.Column(db.String(30))
     started=db.Column(db.Boolean)
+    password=db.Column(db.Boolean)
 
 
-    def __init__(self, id, gara_id, inizio, durata, totale_punti, nome, started):
+    def __init__(self, id, gara_id, inizio, durata, totale_punti, nome, started, password):
         self.id=id
         self.gara_id=gara_id
         self.inizio=inizio
@@ -22,6 +23,7 @@ class SimulazioneModel(db.Model):
         self.durata=durata
         self.nome=nome
         self.started=started
+        self.password=password
 
 
     def create_problemi_simulazione(self):
