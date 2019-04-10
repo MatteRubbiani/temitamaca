@@ -16,19 +16,19 @@ class ConsegnaProblema(Resource):
 
         simulazione=SimulazioneModel.find_by_nome(nome)
         if simulazione is None:
-            return "non esite simulazione"
+            return "non esite simulazione", 400
 
 
 
         if not simulazione.started:
-            return "gara non ancora iniziata"
+            return "gara non ancora iniziata", 400
 
         if CheckEnd(nome):
             return "gara finita"
         problemi=ProblemiSimulazioneModel.find_by_simulazione_id(simulazione.id)
         if problemi is None:
 
-            return "non ci sono problemi in questa simulazione"
+            return "non ci sono problemi in questa simulazione", 400
         for i in problemi:
 
             a=ProblemaModel.find_by_id(i.problema_id)
