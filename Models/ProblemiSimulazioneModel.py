@@ -19,7 +19,16 @@ class ProblemiSimulazioneModel(db.Model):
 
     @classmethod
     def find_by_simulazione_id(cls, nome):
-        return ProblemiSimulazioneModel.query.filter_by(simulazione_id=nome)
+        a=ProblemiSimulazioneModel.query.filter_by(simulazione_id=nome)
+        b=[]
+        try:
+            for i in a:
+                b.append(i)
+
+            return b
+        except:
+            return None
+
     @classmethod
     def delete_by_simulazione_id(cls, simulazione_id):
         problemi= ProblemiSimulazioneModel.query.filter_by(simulazione_id=simulazione_id)

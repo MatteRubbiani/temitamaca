@@ -30,7 +30,10 @@ class ProblemaModel(db.Model):
 
     @classmethod
     def find_by_id(cls, id):
-        return ProblemaModel.query.filter_by(id=id).first()
+        a=ProblemaModel.query.filter_by(id=id).first()
+        if a:
+            return a
+        return None
 
 
     @classmethod
