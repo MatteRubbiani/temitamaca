@@ -95,4 +95,4 @@ class GetProblemiSimulazione(Resource):
                 "durata":simulazione.durata,
                 "gara": gara.nome
             }
-            return 203
+            return o, 203
