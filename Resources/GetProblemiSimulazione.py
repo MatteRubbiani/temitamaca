@@ -19,7 +19,38 @@ class GetProblemiSimulazione(Resource):
 
         if a==1:
 
-            return "metti risulatati", 201
+                simulazione=SimulazioneModel.find_by_nome(sim)
+                problemi1=ProblemiSimulazioneModel.find_by_simulazione_id(simulazione.id)
+
+                if problemi1 is None:
+                    return "non ci sono problemi in questa simulazione"
+                d=[]
+
+                for i in problemi1:
+                    d.append(i)
+                f = sorted(d, key=lambda x: x.numero)
+
+                #problemi=d.sort(key=lambda x: ProblemaModel.find_id(x.problema_id).numero)
+                erroreGara=GaraModel.find_by_id(simulazione.gara_id).errore
+                array=[]
+                for i in f:
+                    valore=ProblemaModel.find_by_id(i.problema_id).valore
+                    if i.risolto:
+                        errori=i.tentativi-1
+                        totalScore=valore-(errori*erroreGara)
+
+                    else:
+                        errori=i.tentativi
+                        totalScore=-(errori*erroreGara)
+                    pb=ProblemaModel.find_by_id(i.problema_id)
+                    array.append(
+                         {"risolto":i.risolto,
+                        "punteggio":totalScore,
+                        "errori":errori,
+                        "tempo":i.tempo_risoluzione-simualazione.inizio}
+                        )
+                return array, 201
+
 
 
         if a==2:
@@ -33,7 +64,7 @@ class GetProblemiSimulazione(Resource):
             for i in problemi1:
                 d.append(i)
             f = sorted(d, key=lambda x: x.numero)
-        
+
             #problemi=d.sort(key=lambda x: ProblemaModel.find_id(x.problema_id).numero)
             erroreGara=GaraModel.find_by_id(simulazione.gara_id).errore
             array=[]
