@@ -9,4 +9,6 @@ class AutorizzaSimulazione(Resource):
         simulazione=SimulazioneModel.find_by_nome(simul)
         if simulazione and simulazione.password==password:
             return True, 200
-        return False, 400
+        if simuazione:
+            return False, 200
+        
