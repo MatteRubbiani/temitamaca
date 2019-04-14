@@ -9,7 +9,7 @@ def CheckEnd(simulazione):
     try:
         expected_end=sim.inizio+sim.durata
         if expected_end<now:
-            if expected_end<now+1200:
+            if expected_end>now+1200:
                 ProblemiSimulazioneModel.delete_by_simulazione_id(sim.id)
                 sim.delete_from_db()
             return True
