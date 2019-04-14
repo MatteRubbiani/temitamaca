@@ -38,7 +38,7 @@ class GetProblemiSimulazione(Resource):
                     if i.risolto:
                         errori=i.tentativi-1
                         totalScore=valore-(errori*erroreGara)
-                        tempo=i.tempo_risoluzione-simualazione.inizio
+                        tempo=i.tempo_risoluzione-simulazione.inizio
 
                     else:
                         errori=i.tentativi
