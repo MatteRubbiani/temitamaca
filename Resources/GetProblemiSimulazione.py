@@ -89,4 +89,10 @@ class GetProblemiSimulazione(Resource):
 
 
         if a==3:
-            return "non ancora iniziata", 203
+            simulazione=SimulazioneModel.find_by_nome(sim)
+            gara=GaraModel.find_by_id(simulazione.gara_id)
+            o={
+                "durata":simulazione.durata,
+                "gara": gara.nome
+            }
+            return 203
