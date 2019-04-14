@@ -38,16 +38,19 @@ class GetProblemiSimulazione(Resource):
                     if i.risolto:
                         errori=i.tentativi-1
                         totalScore=valore-(errori*erroreGara)
+                        tempo=i.tempo_risoluzione-simualazione.inizio
 
                     else:
                         errori=i.tentativi
                         totalScore=-(errori*erroreGara)
+                        tempo=0
                     pb=ProblemaModel.find_by_id(i.problema_id)
                     array.append(
+
                          {"risolto":i.risolto,
                         "punteggio":totalScore,
                         "errori":errori,
-                        "tempo":i.tempo_risoluzione-simualazione.inizio}
+                        "tempo":tempo}
                         )
                 return array, 201
 
