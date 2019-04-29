@@ -40,7 +40,7 @@ class ConsegnaProblema(Resource):
                 if a.soluzione !=int(risposta):
                     gara=GaraModel.find_by_id(simulazione.gara_id)
                     punteggio=gara.errore
-                    if a.jolly:
+                    if i.jolly:
                         punteggio=punteggio*2
                     i.save_to_db()
                     simulazione.totale_punti=simulazione.totale_punti-punteggio
@@ -50,7 +50,7 @@ class ConsegnaProblema(Resource):
                 else:
 
                     punteggio=a.valore
-                    if a.jolly:
+                    if i.jolly:
                         punteggio=punteggio*2
                     i.risolto=True
                     i.tempo_risoluzione= int(time.time())
