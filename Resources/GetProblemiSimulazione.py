@@ -91,10 +91,14 @@ class GetProblemiSimulazione(Resource):
                     if i.jolly:
                         totalScore=totalScore*2
                 pb=ProblemaModel.find_by_id(i.problema_id)
+                if i.jolly:
+                    val=pb.valore*2
+                else:
+                    val=pb.valore
                 array.append({"risolto":i.risolto,
                             "valore":totalScore,
                             "errori":errori,
-                            "valoreEffettivo":pb.valore,
+                            "valoreEffettivo":val,
                             "jolly":i.jolly})
             return array, 202
 
