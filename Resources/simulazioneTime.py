@@ -13,4 +13,4 @@ class SimulazioneTime(Resource):
         if simulazione.started:
             time1=int(time.time())
             tempo=simulazione.inizio+simulazione.durata-time1
-            return time
+            return tempo
