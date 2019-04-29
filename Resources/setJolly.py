@@ -16,7 +16,7 @@ class SetJolly(Resource):
                 return i.numero, 200
 
         for k in problemi:
-            if k.numero == int(simulazione):
+            if k.numero == int(problema):
                 k.jolly=True
                 return 0, 200
         return "il problema non esiste", 400
