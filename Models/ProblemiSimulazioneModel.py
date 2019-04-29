@@ -9,8 +9,10 @@ class ProblemiSimulazioneModel(db.Model):
     risolto=db.Column(db.Boolean)
     tempo_risoluzione=db.Column(db.Integer)#secondi
     numero=db.Column(db.Integer)
+    jolly=db.Column(db.Boolean)
 
-    def __init__(self, id, simulazione_id, problema_id, tentativi, risolto, tempo_risoluzione, numero):
+    
+    def __init__(self, id, simulazione_id, problema_id, tentativi, risolto, tempo_risoluzione, numero, jolly):
         self.id=id
         self.simulazione_id=simulazione_id
         self.problema_id=problema_id
@@ -18,6 +20,7 @@ class ProblemiSimulazioneModel(db.Model):
         self.risolto=risolto
         self.tempo_risoluzione=tempo_risoluzione
         self.numero=numero
+        self.jolly=jolly
 
     @classmethod
     def find_by_simulazione_id(cls, nome):

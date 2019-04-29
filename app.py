@@ -13,7 +13,8 @@ from Resources.StartSimulazione import StartSimulazione
 from Resources.ConsegnaProblema import ConsegnaProblema
 from Resources.GetGare import GetGare
 from Resources.GetProblemiSimulazione import GetProblemiSimulazione
-
+from Resources.setJolly import SetJolly
+from Resources.simulazioneTime import SimulazioneTime
 
 from Resources.GetProblemi import GetSoluzioneProblemi
 
@@ -40,16 +41,20 @@ def create_table():
 
 
 api.add_resource(CreateGara, "/gara/create")
+#api.add_resource( """""""", "/gara/delete")
 
 api.add_resource(CreateProblema, "/problema/create")
 api.add_resource(ConsegnaProblema, "/problema/consegna")
+api.add_resource(SetJolly , "/problema/jolly")
 
 api.add_resource(GetSoluzioneProblemi, "/problemi/all")
 api.add_resource(GetGare, "/gara/all")
 
+
 api.add_resource(CreateSimulazione, "/simulazione/create")
 api.add_resource(StartSimulazione, "/simulazione/start")
 api.add_resource(GetProblemiSimulazione, "/simulazione/get")
+api.add_resource(SimulazioneTime, "/simulazione/time")
 
 api.add_resource(AutorizzaGara, "/autorizza/gara")
 api.add_resource(AutorizzaSimulazione, "/autorizza/simulazione")
