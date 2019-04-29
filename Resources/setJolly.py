@@ -18,5 +18,6 @@ class SetJolly(Resource):
         for k in problemi:
             if k.numero == int(problema):
                 k.jolly=True
+                k.save_to_db()
                 return 0, 200
         return "il problema non esiste", 400
