@@ -23,7 +23,8 @@ def find_valore(problema, simulazione, problema_riferimento, gara):
     if problema.jolly:
         jolly=2
     errore=(problema.tentativi-1)*jolly*gara.errore
-    if not problema.risolto:
+    if  not problema.risolto:
+        errore=(problema.tentativi)*jolly*gara.errore
         return  -errore
 
     valore_effettivo = find_valore_effettivo(problema, simulazione, problema_riferimento)
