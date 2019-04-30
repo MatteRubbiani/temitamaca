@@ -103,7 +103,7 @@ class GetProblemiSimulazione(Resource):
             array=[]
             for i in f:
                 problema_riferimento=ProblemaModel.find_by_id(i.problema_id)
-                valoreEffettivo=find_valore_effettivxo(i, simulazione, problema_riferimento)
+                valoreEffettivo=find_valore_effettivo(i, simulazione, problema_riferimento)
                 valore=find_valore(i, simulazione, problema_riferimento, gara)
                 array.append({"risolto":i.risolto,
                             "valore":valore,
