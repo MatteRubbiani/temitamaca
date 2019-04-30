@@ -108,7 +108,7 @@ class GetProblemiSimulazione(Resource):
                 valore=find_valore(i, simulazione, problema_riferimento, gara)
                 array.append({"risolto":i.risolto,
                             "valore":valore,
-                            "errori":errori,
+                            "errori":i.tentativi-1,
                             "valoreEffettivo":valoreEffettivo,#valore che avrebbe senza gli errori
                             "jolly":i.jolly})
             return array, 202
