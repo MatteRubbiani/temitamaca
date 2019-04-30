@@ -11,3 +11,4 @@ class AutorizzaSimulazione(Resource):
             return True, 200
         if simulazione:
             return False, 200
+        return 400
