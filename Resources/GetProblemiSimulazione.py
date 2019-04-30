@@ -22,12 +22,13 @@ def find_valore(problema, simulazione, problema_riferimento, gara):
     jolly=1
     if problema.jolly:
         jolly=2
-    errore=problema.errori*jolly*gara.errore
+    errore=(problema.tentativi-1)*jolly*gara.errore
     if not problema.risolto:
         return  -errore
 
     valore_effettivo = find_valore_effettivo(problema, simulazione, problema_riferimento)
     totale = valore_effettivo-errore
+    return totale
 
 class GetProblemiSimulazione(Resource):
 
