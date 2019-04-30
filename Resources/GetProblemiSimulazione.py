@@ -106,9 +106,13 @@ class GetProblemiSimulazione(Resource):
                 problema_riferimento=ProblemaModel.find_by_id(i.problema_id)
                 valoreEffettivo=find_valore_effettivo(i, simulazione, problema_riferimento)
                 valore=find_valore(i, simulazione, problema_riferimento, gara)
+                if i.risolto:
+                    errori= i.tentativi-1
+                else:
+                    errori= i.tentativi
                 array.append({"risolto":i.risolto,
                             "valore":valore,
-                            "errori":i.tentativi-1,
+                            "errori":errori,
                             "valoreEffettivo":valoreEffettivo,#valore che avrebbe senza gli errori
                             "jolly":i.jolly})
             return array, 202
