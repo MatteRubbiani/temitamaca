@@ -5,32 +5,33 @@ from Models.ProblemiSimulazioneModel import ProblemiSimulazioneModel
 from Models.ProblemaModel import ProblemaModel
 from Models.GaraModel import GaraModel
 import time
+def find_valore_effettivo(problema, simulazione, problema_riferimento):
+    jolly=1
+    if problema.jolly:
+        jolly=2
+    if problema.risolto:
+        tempo=problema.tempo_risoluzione
+    else:
+        tempo=int(time.time())
+    tempo_trascorso = tempo-simulazione.inizio
+    bonus = tempo_trascorso//60
+    valore_puro = problema_riferimento.valore + bonus
+    return valore_puro*jolly
+
+def find_valore(problema, simulazione, problema_riferimento, gara):
+    jolly=1
+    if problema.jolly:
+        jolly=2
+    errore=problema.errori*jolly*gara.errore
+    if not problema.risolto:
+        return  -errore
+
+    valore_effettivo = find_valore_effettivo(problema, simulazione, problema_riferimento)
+    totale = valore_effettivo-errore
 
 class GetProblemiSimulazione(Resource):
 
-    def find_valore_effettivo(problema, simulazione, problema_riferimento):
-        jolly=1
-        if problema.jolly:
-            jolly=2
-        if problema.risolto:
-            tempo=problema.tempo_risoluzione
-        else:
-            tempo=int(time.time())
-        tempo_trascorso = tempo-simulazione.inizio
-        bonus = tempo_trascorso//60
-        valore_puro = problema_riferimento.valore + bonus
-        return valore_puro*jolly
 
-    def find_valore(problema, simulazione, problema_riferimento, gara):
-        jolly=1
-        if problema.jolly:
-            jolly=2
-        errore=problema.errori*jolly*gara.errore
-        if not problema.risolto:
-            return  -errore
-
-        valore_effettivo = find_valore_effettivo(problema, simulazione, problema_riferimento)
-        totale = valore_effettivo-errore
 
     def get (self):
         sim=request.args.get('simulazione')
@@ -102,7 +103,7 @@ class GetProblemiSimulazione(Resource):
             array=[]
             for i in f:
                 problema_riferimento=ProblemaModel.find_by_id(i.problema_id)
-                valoreEffettivo=find_valore_effettivo(i, simulazione, problema_riferimento)
+                valoreEffettivo=find_valore_effettivxo(i, simulazione, problema_riferimento)
                 valore=find_valore(i, simulazione, problema_riferimento, gara)
                 array.append({"risolto":i.risolto,
                             "valore":valore,
