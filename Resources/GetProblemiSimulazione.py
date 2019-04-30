@@ -127,3 +127,6 @@ class GetProblemiSimulazione(Resource):
                 "gara": gara.nome
             }
             return o, 203
+
+        else:
+            return a, 401
