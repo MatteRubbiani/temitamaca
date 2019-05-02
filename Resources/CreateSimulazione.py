@@ -3,15 +3,18 @@ from Models.GaraModel import GaraModel
 from Models.ProblemaModel import ProblemaModel
 from Models.SimulazioneModel import SimulazioneModel
 from Models.ProblemiSimulazioneModel import ProblemiSimulazioneModel
+from Resources.CheckEnd import CheckEnd
 
 class CreateSimulazione(Resource):
 
     def post (self):
+
         garaNome=request.args.get('gara')
+
         simulazioneNome=request.args.get('nome')
         durata=request.args.get('durata')
         password=request.args.get('password')
-
+        CheckEnd(simulazioneNome)
         gara=GaraModel.find_by_nome(garaNome)
         if gara is None:
             return "gara non esiste", 400
